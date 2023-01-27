@@ -1,8 +1,7 @@
 package me.tongfei.progressbar;
 
 import java.io.IOException;
-import java.util.Queue;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.ConcurrentLinkedDeque;
 import java.util.stream.Stream;
 
 import org.jline.terminal.Terminal;
@@ -22,10 +21,10 @@ public class TerminalUtils {
     private static Terminal terminal = null;
     private static boolean cursorMovementSupported = false;
 
-    static Queue<ProgressBarConsumer> activeConsumers = new ConcurrentLinkedQueue<>();
+    static ConcurrentLinkedDeque<ProgressBarConsumer> activeConsumers = new ConcurrentLinkedDeque<>();
 
     synchronized static int getTerminalWidth() {
-        Terminal terminal = getTerminal();
+        final Terminal terminal = getTerminal();
         int width = terminal.getWidth();
 
         // Workaround for issue #23 under IntelliJ

@@ -39,6 +39,8 @@ class Issue40Test {
                 pb.step();
             }
         }
+
+        sc.close();
     }
 
 }

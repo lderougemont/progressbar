@@ -30,13 +30,12 @@ class ProgressUpdateAction implements Runnable {
     }
 
     void refresh() {
-        if (continuousUpdate || (progress.current > last))
+        if (continuousUpdate || (progress.current != last))
             forceRefresh();
-        // else do nothing: only print when actual progress is made (#91).
     }
 
     public void forceRefresh() {
-        String rendered = renderer.render(progress, consumer.getMaxRenderedLength());
+        final String rendered = renderer.render(progress, consumer.getMaxRenderedLength());
         consumer.accept(rendered);
         last = progress.current;
     }

@@ -2,6 +2,8 @@ package me.tongfei.progressbar;
 
 import java.util.function.Consumer;
 
+import static me.tongfei.progressbar.TerminalUtils.CARRIAGE_RETURN;
+
 /**
  * A consumer that prints a rendered progress bar.
  * @since 0.8.0
@@ -23,7 +25,7 @@ public interface ProgressBarConsumer extends Consumer<String>, Appendable, AutoC
 
     /** Clears the progress bar from the display. */
     default void clear() {
-        accept("\r" + Util.repeat(' ', getMaxRenderedLength()) + "\r");
+        accept(CARRIAGE_RETURN + Util.repeat(' ', getMaxRenderedLength()) + CARRIAGE_RETURN);
     }
 
     default ProgressBarConsumer append(CharSequence csq) {

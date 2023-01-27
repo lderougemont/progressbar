@@ -6,7 +6,7 @@
 
     <groupId>me.tongfei</groupId>
     <artifactId>progressbar</artifactId>
-    <version>0.9.5</version>
+    <version>0.9.5.1</version>
     <name>progressbar</name>
     <description>A terminal-based progress bar for JVM</description>
     <url>http://github.com/ctongfei/progressbar</url>
@@ -197,9 +197,10 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <version>3.0.0</version>
+                <version>3.4.1</version>
                 <configuration>
                     <doclint>all,-missing</doclint>
+                    <javadocExecutable>${java.home}/bin/javadoc</javadocExecutable>
                 </configuration>
                 <executions>
                     <execution>
@@ -210,7 +211,7 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
+            <!-- <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-gpg-plugin</artifactId>
                 <version>1.5</version>
@@ -223,7 +224,7 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin> -->
             <plugin>
                 <groupId>org.sonatype.plugins</groupId>
                 <artifactId>nexus-staging-maven-plugin</artifactId>

@@ -16,6 +16,7 @@ public class ConsoleProgressBarConsumer implements ProgressBarConsumer {
     private static int consoleRightMargin = 1;
     int maxRenderedLength = -1;
     final PrintStream out;
+    boolean clearDisplayOnFinish = false;
 
     public ConsoleProgressBarConsumer(PrintStream out) {
         this.out = out;
@@ -24,6 +25,12 @@ public class ConsoleProgressBarConsumer implements ProgressBarConsumer {
     public ConsoleProgressBarConsumer(PrintStream out, int maxRenderedLength) {
         this.maxRenderedLength = maxRenderedLength;
         this.out = out;
+    }
+
+    public ConsoleProgressBarConsumer(PrintStream out, int maxRenderedLength, boolean clearDisplayOnFinish) {
+        this.maxRenderedLength = maxRenderedLength;
+        this.out = out;
+        this.clearDisplayOnFinish = clearDisplayOnFinish;
     }
 
     @Override
@@ -40,7 +47,8 @@ public class ConsoleProgressBarConsumer implements ProgressBarConsumer {
 
     @Override
     public void close() {
-        out.println();
+        if (!clearDisplayOnFinish)
+            out.println();
         out.flush();
     }
 }

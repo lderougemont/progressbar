@@ -46,6 +46,9 @@ public class ProgressBar implements AutoCloseable {
     /**
      * Creates a progress bar with the specific taskName name, initial maximum value,
      * customized update interval (default 1000 ms), the PrintStream to be used, and output style.
+     *
+     * Use {@link ProgressBarBuilder} instead.
+     *
      * @param task Task name
      * @param initialMax Initial maximum value
      * @param updateIntervalMillis Update interval (default value 1000 ms)
@@ -53,7 +56,6 @@ public class ProgressBar implements AutoCloseable {
      * @param style Output style (default value ProgressBarStyle.UNICODE_BLOCK)
      * @param showSpeed Should the calculated speed be displayed
      * @param speedFormat Speed number format
-     * @deprecated Use {@link ProgressBarBuilder} instead.
      */
     public ProgressBar(
             String task,
@@ -77,13 +79,16 @@ public class ProgressBar implements AutoCloseable {
                         showSpeed, speedFormat, speedUnit,
                         true, Util::linearEta
                 ),
-                createConsoleConsumer(os)
+                createConsoleConsumer(os, clearDisplayOnFinish)
         );
     }
 
     /**
      * Creates a progress bar with the specific name, initial maximum value, customized update interval (default 1s),
      * and the provided progress bar renderer ({@link ProgressBarRenderer}) and consumer ({@link ProgressBarConsumer}).
+     *
+     * Use {@link ProgressBarBuilder} instead. Will be private in future versions.
+     *
      * @param task Task name
      * @param initialMax Initial maximum value
      * @param updateIntervalMillis Update time interval (default value 1000ms)
@@ -92,7 +97,6 @@ public class ProgressBar implements AutoCloseable {
      * @param elapsed Initial elapsedBeforeStart second before
      * @param renderer Progress bar renderer
      * @param consumer Progress bar consumer
-     * @deprecated Use {@link ProgressBarBuilder} instead. Will be private in future versions.
      */
     public ProgressBar(
             String task,

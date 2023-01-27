@@ -1,7 +1,5 @@
 package me.tongfei.progressbar;
 
-import java.io.FileDescriptor;
-import java.io.FileOutputStream;
 import java.io.PrintStream;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.api.extension.BeforeAllCallback;

@@ -2,7 +2,6 @@ package me.tongfei.progressbar;
 
 import java.text.DecimalFormat;
 import java.time.Duration;
-import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.Optional;
 import java.util.function.Function;
@@ -98,6 +97,8 @@ public class DefaultProgressBarRenderer implements ProgressBarRenderer {
                     suffix = "/d";
                     elapsedInUnit /= (60 * 60 * 24);
                     break;
+                default:
+                    suffix = "/uknown";
             }
 
         if (elapsedSeconds == 0)

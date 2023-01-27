@@ -21,9 +21,6 @@ class ProgressBarTest {
              .setTaskName("Test").setInitialMax(5).setUpdateIntervalMillis(50)
              .setStyle(ProgressBarStyle.COLORFUL_UNICODE_BAR).setUnit("K", 1024).build()) {
 
-            double x = 1.0;
-            double y = x * x;
-
             ArrayList<Integer> l = new ArrayList<Integer>();
 
             System.out.println("\n\n\n\n\n");

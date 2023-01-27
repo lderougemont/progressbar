@@ -75,5 +75,8 @@ buildNumber.properties
 .settings
 .project
 
+#VSCode
+.vscode
+
 # MkDocs
 site/

@@ -17,19 +17,19 @@ class Util {
         return thread;
     });
 
-    static ConsoleProgressBarConsumer createConsoleConsumer(int predefinedWidth) {
+    static ConsoleProgressBarConsumer createConsoleConsumer(int predefinedWidth, boolean clearDisplayOnFinish) {
         PrintStream real = new PrintStream(new FileOutputStream(FileDescriptor.err));
-        return createConsoleConsumer(real, predefinedWidth);  // System.err might be overridden by System.setErr
+        return createConsoleConsumer(real, predefinedWidth, clearDisplayOnFinish);  // System.err might be overridden by System.setErr
     }
 
-    static ConsoleProgressBarConsumer createConsoleConsumer(PrintStream out) {
-        return createConsoleConsumer(out, -1);
+    static ConsoleProgressBarConsumer createConsoleConsumer(PrintStream out, boolean clearDisplayOnFinish) {
+        return createConsoleConsumer(out, -1, clearDisplayOnFinish);
     }
 
-    static ConsoleProgressBarConsumer createConsoleConsumer(PrintStream out, int predefinedWidth) {
+    static ConsoleProgressBarConsumer createConsoleConsumer(PrintStream out, int predefinedWidth, boolean clearDisplayOnFinish) {
         return TerminalUtils.hasCursorMovementSupport()
-                ? new InteractiveConsoleProgressBarConsumer(out, predefinedWidth)
-                : new ConsoleProgressBarConsumer(out, predefinedWidth);
+                ? new InteractiveConsoleProgressBarConsumer(out, predefinedWidth, clearDisplayOnFinish)
+                : new ConsoleProgressBarConsumer(out, predefinedWidth, clearDisplayOnFinish);
     }
 
     static String repeat(char c, int n) {

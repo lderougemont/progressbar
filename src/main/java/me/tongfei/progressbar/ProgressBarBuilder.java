@@ -133,7 +133,7 @@ public class ProgressBarBuilder {
                         style, unitName, unitSize,
                         showSpeed, speedFormat, speedUnit,
                         !hideEta, eta),
-                consumer == null ? Util.createConsoleConsumer(maxRenderedLength) : consumer
+                consumer == null ? Util.createConsoleConsumer(maxRenderedLength, clearDisplayOnFinish) : consumer
         );
     }
 }
